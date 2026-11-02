@@ -1,0 +1,50 @@
+# Infrastructure only: the durable data spine (one Postgres) and the queue/checkpointer Redis.
+# The app itself runs on the host (uv run) or in Railway in production.
+#
+# Host ports are deliberately moved off the defaults so this stack never fights a
+# local Postgres/Redis you already run: Postgres 5433, Redis 6380.
+#
+#   docker compose up -d
+#   uv run pr-review migrate
+#
+# timescaledb-ha bundles TimescaleDB + pgvector + pgvectorscale, which is what lets the
+# local spine carry the time-series lane (hypertables, continuous aggregates) and the
+# vector lane (DiskANN) without Tiger Cloud. Pointing DATABASE_URL at Tiger Cloud later
+# is a connection-string change; the migrations probe capabilities either way.
+
+services:
+  postgres:
+    image: timescale/timescaledb-ha:pg16
+    container_name: prreview-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: prreview
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/home/postgres/pgdata/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d prreview"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    # redis-stack (not plain redis) because the LangGraph checkpointer needs
+    # RediSearch/RedisJSON. ARQ does not care either way.
+    image: redis/redis-stack-server:7.4.0-v0
+    container_name: prreview-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
+  redisdata:

@@ -1,0 +1,48 @@
+
+> pr-review-console@0.1.0 dev
+> next dev --port 3000
+
+   ▲ Next.js 15.5.25
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.64.1:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 874ms (597 modules)
+ GET / 200 in 1392ms
+ GET / 200 in 63ms
+ GET / 200 in 56ms
+ ✓ Compiled /connect in 317ms (606 modules)
+ GET /connect 200 in 579ms
+ ✓ Compiled /reviews/[id] in 292ms (619 modules)
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 200 in 1190ms
+ GET / 200 in 230ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 200 in 35ms
+ GET /connect 200 in 34ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 200 in 33ms
+ GET /connect 200 in 28ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 200 in 33ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 200 in 67ms
+ GET /connect 200 in 43ms
+ GET /reviews/c6eb6ad6-2d48-449d-99e4-68195094c15a 200 in 35ms
+ GET / 200 in 25ms
+ ✓ Compiled /economics in 350ms (626 modules)
+ GET /economics 200 in 462ms
+ ✓ Compiled /agents in 217ms (633 modules)
+ GET /agents 200 in 323ms
+ ✓ Compiled in 540ms (623 modules)
+ ✓ Compiled /agents in 170ms (388 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1810ms (975 modules)
+ GET /agents 500 in 2673ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 500 in 1123ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 500 in 479ms
+ GET / 500 in 317ms
+ GET /reviews/43308006-9b46-4997-ae9b-2dec33bbc4c2 500 in 435ms
+ GET / 500 in 263ms
+ GET / 500 in 174ms
+ GET / 500 in 253ms
+ GET / 500 in 254ms
+[?25h

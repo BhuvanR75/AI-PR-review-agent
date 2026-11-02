@@ -1,0 +1,23 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# local secrets and local-only artifacts (dry-run GitHub inbox/outbox live here)
+.env
+.env.*
+!.env.example
+!**/.env*.example
+.local/
+
+# frontend
+node_modules/
+.next/
+frontend/out/
+
+# os
+.DS_Store
+Thumbs.db
